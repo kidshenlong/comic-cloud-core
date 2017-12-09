@@ -22,7 +22,8 @@ libraryDependencies ++=Seq(
   "org.json4s"        %%  "json4s-jackson"            % "3.5.3",
   "de.heikoseeberger" %%  "akka-http-json4s"          % "1.17.0",
   "com.typesafe.akka" %%  "akka-http-testkit"         % akkaHttpVersion % Test,
-  "com.typesafe.akka" %%  "akka-stream-testkit"       % akkaVersion     % Test
+  "com.typesafe.akka" %%  "akka-stream-testkit"       % akkaVersion     % Test,
+  "org.specs2"        %% "specs2-core"                % "4.0.0"         % Test
 )
 
 enablePlugins(DockerPlugin)
