@@ -1,6 +1,8 @@
 
 name := "comic-cloud-core"
 
+organization := "io.comiccloud"
+
 version := "0.1"
 
 scalaVersion := "2.11.12"
@@ -37,5 +39,18 @@ dockerfile in docker := {
     from("java")
     add(artifact, artifactTargetPath)
     entryPoint("java", "-jar", artifactTargetPath)
+    expose(8080)
   }
 }
+
+imageNames in docker := Seq(
+  // Sets the latest tag
+  ImageName(s"${organization.value}/${name.value}:latest"),
+
+  // Sets a name with a tag that contains the project version
+  ImageName(
+    namespace = Some(organization.value),
+    repository = name.value,
+    tag = Some("v" + version.value)
+  )
+)
