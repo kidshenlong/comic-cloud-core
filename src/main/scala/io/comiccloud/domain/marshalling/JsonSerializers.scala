@@ -6,6 +6,6 @@ import org.json4s.{DefaultFormats, Formats, jackson}
 trait JsonSerializers extends Json4sSupport{
 
   implicit val serialization = jackson.Serialization
-  implicit val jsonFormats: Formats = DefaultFormats
+  implicit val jsonFormats: Formats = DefaultFormats.preservingEmptyValues ++ org.json4s.ext.JavaTypesSerializers.all
 
 }

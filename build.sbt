@@ -22,10 +22,11 @@ libraryDependencies ++=Seq(
   "com.nulab-inc"     %%  "scala-oauth2-core"         % "1.3.0",
   "com.nulab-inc"     %%  "akka-http-oauth2-provider" % "1.3.0",
   "org.json4s"        %%  "json4s-jackson"            % "3.5.3",
+  "org.json4s"        %%  "json4s-ext"                % "3.5.3",
   "de.heikoseeberger" %%  "akka-http-json4s"          % "1.17.0",
   "com.typesafe.akka" %%  "akka-http-testkit"         % akkaHttpVersion % Test,
   "com.typesafe.akka" %%  "akka-stream-testkit"       % akkaVersion     % Test,
-  "org.specs2"        %% "specs2-core"                % "4.0.0"         % Test
+  "org.specs2"        %%  "specs2-core"               % "4.0.0"         % Test
 )
 
 enablePlugins(DockerPlugin)
