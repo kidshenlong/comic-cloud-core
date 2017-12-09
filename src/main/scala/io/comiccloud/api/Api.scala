@@ -1,9 +1,9 @@
 package io.comiccloud.api
 
-import akka.http.scaladsl.server.Directives.{complete, get, pathSingleSlash}
+import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 
-trait Api {
+trait Api extends ComicsApi with SeriesApi with UploadsApi with UsersApi {
 
   lazy val routes: Route = get {
     pathSingleSlash {
@@ -11,6 +11,6 @@ trait Api {
         "Captain on the bridge!"
       }
     }
-  }
+  } ~ comicsRoute ~ seriesRoute ~ uploadsRoute ~ usersRoute
 
 }
