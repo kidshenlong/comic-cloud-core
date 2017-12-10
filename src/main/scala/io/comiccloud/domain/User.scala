@@ -1,3 +1,5 @@
 package io.comiccloud.domain
 
-case class User()
+import java.util.UUID
+
+case class User(id: UUID, name: String, hashedPassword: String)

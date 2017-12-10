@@ -6,7 +6,7 @@ import io.comiccloud.domain.{Comic, User}
 
 import scala.concurrent.Future
 
-abstract class AbstractComicsDataSource {
+trait AbstractComicsDataSource {
 
   def comic(id: UUID, user: User): Future[Option[Comic]]
   def comics(user: User): Future[Seq[Comic]]
