@@ -16,7 +16,7 @@ class InMemoryOauthDataSource extends DataHandler[User] {
     User(UUID.randomUUID(), "kidshenlong", "password"),
     User(UUID.randomUUID(), "other_user", "password")
   )
-  private val accessTokensStore: mutable.Map[UUID, mutable.Buffer[AccessToken]] = mutable.Map()
+  private var accessTokensStore: mutable.Map[UUID, mutable.Buffer[AccessToken]] = mutable.Map()
 
   override def validateClient(maybeCredential: Option[ClientCredential], request: AuthorizationRequest): Future[Boolean] = {
     Future.successful{
@@ -47,7 +47,20 @@ class InMemoryOauthDataSource extends DataHandler[User] {
   }
 
   override def getStoredAccessToken(authInfo: AuthInfo[User]): Future[Option[AccessToken]] = {
-    Future.successful(accessTokensStore.get(authInfo.user.id).map(accessTokens => accessTokens.minBy(_.createdAt)))
+    Future.successful{
+      accessTokensStore.get(authInfo.user.id)
+        .map(accessTokens => accessTokens.minBy(_.createdAt))
+        .map( accessToken =>
+          AccessToken(
+            accessToken.token,
+            accessToken.refreshToken,
+            accessToken.scope,
+            accessToken.lifeSeconds,
+            accessToken.createdAt,
+            accessToken.params
+          )
+        )// recreate access token https://github.com/nulab/scala-oauth2-provider/issues/118
+    }
   }
 
   override def refreshAccessToken(authInfo: AuthInfo[User], refreshToken: String): Future[AccessToken] = ???
