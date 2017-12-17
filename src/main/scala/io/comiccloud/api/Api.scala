@@ -28,7 +28,7 @@ trait Api extends ComicsApi with SeriesApi with UploadsApi with UsersApi with Oa
 
   val oauthDataSource: DataHandler[User] = new InMemoryPasswordOauthDataSource
 
-  def oauth2Authenticator(credentials: Credentials): Future[Option[AuthInfo[User]]] =
+  /*def oauth2Authenticator(credentials: Credentials): Future[Option[AuthInfo[User]]] =
     credentials match {
       case Credentials.Provided(token) =>
         oauthDataSource.findAccessToken(token).flatMap {
@@ -36,7 +36,7 @@ trait Api extends ComicsApi with SeriesApi with UploadsApi with UsersApi with Oa
           case None => Future.successful(None)
         }
       case _ => Future.successful(None)
-    }
+    }*/
 
   lazy val routes: Route = get {
     pathSingleSlash {

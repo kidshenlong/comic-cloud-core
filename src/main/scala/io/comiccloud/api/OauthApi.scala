@@ -18,6 +18,10 @@ trait OauthApi extends JsonSerializers with TokenEndpoint{
 
   //val tokenEndpoint: TokenEndpoint
 
+  override val handlers = Map(
+    "password" -> new Password()
+  )
+
   val oauthDataSource: DataHandler[User]
 
   import scala.concurrent.ExecutionContext.Implicits.global
