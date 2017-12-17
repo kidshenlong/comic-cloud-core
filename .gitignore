@@ -4,3 +4,7 @@
 
 # SBT
 target/
+
+#Scala
+
+*.sc
