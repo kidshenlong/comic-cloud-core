@@ -20,7 +20,7 @@ libraryDependencies ++=Seq(
   "org.slf4s"         %%  "slf4s-api"                 % "1.7.12",
   "ch.qos.logback"    %   "logback-classic"           % "1.2.1",
   "com.nulab-inc"     %%  "scala-oauth2-core"         % "1.3.0",
-  "com.nulab-inc"     %%  "akka-http-oauth2-provider" % "1.3.0",
+  //"com.nulab-inc"     %%  "akka-http-oauth2-provider" % "1.3.0",
   "org.json4s"        %%  "json4s-jackson"            % "3.5.3",
   "org.json4s"        %%  "json4s-ext"                % "3.5.3",
   "de.heikoseeberger" %%  "akka-http-json4s"          % "1.17.0",
