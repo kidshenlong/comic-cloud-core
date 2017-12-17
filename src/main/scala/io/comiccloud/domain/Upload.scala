@@ -1,3 +1,8 @@
 package io.comiccloud.domain
 
-case class Upload()
+import java.util.UUID
+
+case class Upload(
+  id: UUID,
+  processing_progress: Double
+)

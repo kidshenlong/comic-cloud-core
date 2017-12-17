@@ -35,7 +35,6 @@ trait OauthApi extends JsonSerializers with TokenEndpoint{
             maybeGrantResponse.fold(
               oauthError => complete(oauthError),
               grantResult => {
-                //complete(grantResult.toString)
                 val response = OauthResponse(grantResult.accessToken, grantResult.refreshToken.get, grantResult.expiresIn.get)
 
                 complete(response)

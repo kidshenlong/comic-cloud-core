@@ -2,6 +2,7 @@ package io.comiccloud.datasource
 
 import java.util.{Date, UUID}
 
+import io.comiccloud.config.Config
 import io.comiccloud.domain.User
 
 import scala.collection.mutable
@@ -10,7 +11,7 @@ import scala.util.Random
 import scalaoauth2.provider._
 import io.comiccloud.datasource.OauthMockData._
 
-class InMemoryPasswordOauthDataSource extends DataHandler[User] {
+class InMemoryPasswordOauthDataSource extends DataHandler[User] with Config {
 
   override def validateClient(maybeCredential: Option[ClientCredential], request: AuthorizationRequest): Future[Boolean] = {
     Future.successful{
@@ -29,7 +30,7 @@ class InMemoryPasswordOauthDataSource extends DataHandler[User] {
   }
 
   override def createAccessToken(authInfo: AuthInfo[User]): Future[AccessToken] = {
-    val accessToken = AccessToken(Random.alphanumeric.take(10).mkString, Some(Random.alphanumeric.take(10).mkString), authInfo.scope, Some(20), new Date)
+    val accessToken = AccessToken(Random.alphanumeric.take(10).mkString, Some(Random.alphanumeric.take(10).mkString), authInfo.scope, Some(accessTokenLifeInSecond), new Date)
 
     accessTokensStore.get(authInfo.user.id) match {
       case Some(accessTokens) => accessTokens += AccessTokenInformation(accessToken, authInfo.clientId.get)
