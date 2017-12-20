@@ -27,7 +27,8 @@ libraryDependencies ++=Seq(
   "joda-time"         %   "joda-time"                 % "2.9.9",
   "com.typesafe.akka" %%  "akka-http-testkit"         % akkaHttpVersion % Test,
   "com.typesafe.akka" %%  "akka-stream-testkit"       % akkaVersion     % Test,
-  "org.specs2"        %%  "specs2-core"               % "4.0.0"         % Test
+  "org.specs2"        %%  "specs2-core"               % "4.0.0"         % Test,
+  "org.specs2"        %%  "specs2-mock"               % "4.0.0"         % Test
 )
 
 enablePlugins(DockerPlugin)
