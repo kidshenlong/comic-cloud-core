@@ -33,4 +33,8 @@ class InMemorySeriesDataSource()/*(implicit executionContext: ExecutionContext)*
       Unit
     }
   }
+
+  override def update(user: User, series: Series): Future[Unit] = ???
+
+  override def delete(user: User, series: Series): Future[Unit] = ???
 }

@@ -38,4 +38,8 @@ class InMemoryComicsDataSource()/*(implicit executionContext: ExecutionContext)*
   override def fetchBySeries(user: User, seriesId: UUID, limit: Int, offset: Int): Future[Seq[Comic]] = {
     Future.successful(comicStore.filter(_.series_id == seriesId))
   }
+
+  override def update(user: User, comic: Comic): Future[Unit] = ???
+
+  override def delete(user: User, comic: Comic): Future[Unit] = ???
 }

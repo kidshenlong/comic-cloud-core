@@ -22,14 +22,9 @@ trait ComicsApi extends JsonSerializers with AuthenticationDirective {
   //todo extract to application context
 
   val comicsRoute =
-
     authenticateOAuth2Async("???", oauth2Authenticator){ authInfo =>
       path("comics") {
-        /*get { //todo getting all comics probably doesn't make sense
-          onSuccess(comicsDataSource.comics(authInfo.user)) { results =>
-            complete(Response(0, 0, 0, results))
-          }
-        } ~ */post {
+        post {
           entity(as[Seq[Comic]]) { comics =>
             onSuccess(Future.sequence(comics.map((comic: Comic) => comicsDataSource.create(authInfo.user, comic)))) { res =>
               complete(Success)

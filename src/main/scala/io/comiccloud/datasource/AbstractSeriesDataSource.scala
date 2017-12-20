@@ -11,5 +11,7 @@ trait AbstractSeriesDataSource {
   def fetch(user: User, id: UUID): Future[Option[Series]]
   def fetchAll(user: User, limit: Int, offset: Int): Future[Seq[Series]]
   def create(user: User, series: Series): Future[Unit]
+  def update(user: User, series: Series): Future[Unit]
+  def delete(user: User, series: Series): Future[Unit]
 
 }

@@ -24,7 +24,7 @@ class InMemoryPasswordOauthDataSource extends DataHandler[User] with Config {
 
   override def findUser(maybeCredential: Option[ClientCredential], request: AuthorizationRequest): Future[Option[User]] = Future.successful{
     userStore.find(user =>
-      user.name == request.asInstanceOf[PasswordRequest].username
+      user.username == request.asInstanceOf[PasswordRequest].username
         && user.hashedPassword == request.asInstanceOf[PasswordRequest].password
     )
   }
