@@ -22,7 +22,7 @@ trait SeriesApi extends JsonSerializers with AuthenticationDirective {
     authenticateOAuth2Async("???", oauth2Authenticator) { authInfo =>
       parameters('limit ? 20, 'offset ? 0) { (limit, offset) =>
         path("series") {
-          get { //todo getting all comics probably doesn't make sense
+          get {
             onSuccess(seriesDataSource.fetchAll(authInfo.user, limit, offset)) { results =>
               complete(Response(0, 0, 0, results))
             }
