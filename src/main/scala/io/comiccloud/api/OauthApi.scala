@@ -16,8 +16,6 @@ import scalaoauth2.provider.{AuthorizationRequest, DataHandler, Password, TokenE
 
 trait OauthApi extends JsonSerializers with TokenEndpoint{
 
-  //val tokenEndpoint: TokenEndpoint
-
   override val handlers = Map(
     "password" -> new Password()
   )
